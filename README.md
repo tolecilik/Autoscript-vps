@@ -1,8 +1,8 @@
 # Autoscript VPS v.2
 ## _Fighter Tunnel, This autoscript can be used by Debian 10/Ubuntu 20.04 (LTS)_
 
-### Contact admin 1 [bhoikfostyahya](https://t.me/bhoikfost_yahya)
-### Contact admin 2  [Bokir](https://t.me/boootzzzzzz) 
+### Contact admin [bhoikfostyahya](https://t.me/bhoikfost_yahya) / [Bokir](https://t.me/boootzzzzzz) 
+
 |        SERVICE          |      PORT      |
 |-------------------------|----------------|
 | Open SSH                |  443, 22       |
