@@ -1,3 +1,4 @@
+#bhoikfostyahya ^Project
 global
         tune.ssl.default-dh-param 2048
         tune.h2.initial-window-size 2147483647
@@ -28,25 +29,25 @@ frontend http
 
 backend sshws
         mode http
-        server sshws 127.0.0.1:22
+        server sshws 127.0.0.1:22 check
 
 backend openresty_http
         mode http
-        server http1   127.0.0.1:18020
-#       server http2   127.0.0.1:18030
-#       server http3   172.67.177.111:80
-#       server http4   104.21.83.143:80
-#       server http5   104.26.1.150:80
-#       server http6   104.26.0.150:80
-#       server http7   172.67.69.9:80
-#       server http8   104.21.14.244:80
-#       server http9   172.67.160.206:80
-#       server http10  172.67.24.177:80
-#       server http11  104.22.65.181:80
-#       server http12  104.22.64.181:80
-#       server http13  172.67.70.101:80
-#       server http14  127.0.0.1:10010
-#       server http15  104.18.20.226:80
+        server http1   127.0.0.1:18020 send-proxy check
+#       server http2   127.0.0.1:18030 send-proxy check
+#       server http3   172.67.177.111:80 send-proxy check
+#       server http4   104.21.83.143:80 send-proxy check
+#       server http5   104.26.1.150:80 send-proxy check
+#       server http6   104.26.0.150:80 send-proxy check
+#       server http7   172.67.69.9:80 send-proxy check
+#       server http8   104.21.14.244:80 send-proxy check
+#       server http9   172.67.160.206:80 send-proxy check
+#       server http10  172.67.24.177:80 send-proxy check
+#       server http11  104.22.65.181:80 send-proxy check
+#       server http12  104.22.64.181:80 send-proxy check
+#       server http13  172.67.70.101:80 send-proxy check
+#       server http14  127.0.0.1:10010 send-proxy check
+#       server http15  104.18.20.226:80 send-proxy check
 
 frontend ssl
         mode tcp
@@ -57,7 +58,7 @@ frontend ssl
         tcp-request content accept if { req.payload(0,11) -m found }
         tcp-request content accept if WAIT_END 
         tcp-request content accept if { req.ssl_hello_type 1 }
-        acl web req_ssl_sni -i xxx
+        acl web req_ssl_sni -i kntl.ftvpn.net
         acl is_ssh req.payload(0,7) -m bin 5353482d322e30        
         use_backend FighterTunnel  if web
         use_backend ssh if is_ssh
@@ -65,16 +66,15 @@ frontend ssl
 
 backend FighterTunnel 
         mode tcp
-        server localhost 127.0.0.1:10020
+        server localhost 127.0.0.1:10020 send-proxy check
 
 backend FighterTunnel_web2
         mode tcp
         balance roundrobin
-        server website1 127.0.0.1:10030
-        server website2 127.0.0.1:10040
-        server website3 127.0.0.1:1194
+        server website1 127.0.0.1:10030 send-proxy check
+        server website2 127.0.0.1:10040 send-proxy check
+        server website3 127.0.0.1:1194 check
 
 backend ssh
         mode tcp
-        server website4 127.0.0.1:22
-
+        server website4 127.0.0.1:22 check
