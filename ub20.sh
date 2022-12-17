@@ -359,7 +359,7 @@ LINUX       : <code>${OS}</code>
     LOGO
     echo "    ┌─────────────────────────────────────────────────────┐"
     echo "    │       >>> Service & Port                            │"
-    echo "    │   - Open SSH                : 443, 22               │"
+    echo "    │   - Open SSH                : 443, 80, 22           │"
     echo "    │   - Dropbear                : 443, 109, 143         │"
     echo "    │   - Dropbear Websocket      : 443, 109              │"
     echo "    │   - SSH Websocket SSL       : 443                   │"
