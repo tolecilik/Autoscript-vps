@@ -7,28 +7,33 @@ defaults
         mode    tcp
         option  dontlognull
         maxconn 5000
-        timeout connect 5s
+        timeout connect 1s
         timeout client  20s
         timeout server  20s
         timeout queue   30s
-        timeout http-request 5s
+        timeout http-request 1s
         timeout http-keep-alive 1s
 
 frontend http
         mode http
         bind *:80
-        tcp-request inspect-delay 100ms
+        tcp-request inspect-delay 1ms
         tcp-request content accept if { req.payload(0,3) -m found }
         tcp-request content accept if WAIT_END 
         tcp-request content accept if { req.ssl_hello_type 1 }
         tcp-request content accept if HTTP
         use_backend openresty_http if HTTP
+        default_backend sshws
+
+
+backend sshws
+        mode http
+        server sshws 127.0.0.1:22
 
 backend openresty_http
         mode http
-        balance roundrobin
         server http1   127.0.0.1:18020
-        server http2   127.0.0.1:18030
+#       server http2   127.0.0.1:18030
 #       server http3   172.67.177.111:80
 #       server http4   104.21.83.143:80
 #       server http5   104.26.1.150:80
@@ -45,17 +50,17 @@ backend openresty_http
 
 frontend ssl
         mode tcp
-        bind *:443 tfo ssl crt /etc/haproxy/yha.pem alpn h2,http/1.1
+        bind 0.0.0.0:80
         bind 0.0.0.0:443
-        tcp-request inspect-delay 100ms
-        tcp-request content accept if { req.payload(0,3) -m found }
+        bind *:443 tfo ssl crt /etc/haproxy/yha.pem alpn h2,http/1.1
+        tcp-request inspect-delay 1s
+        tcp-request content accept if { req.payload(0,11) -m found }
         tcp-request content accept if WAIT_END 
         tcp-request content accept if { req.ssl_hello_type 1 }
-        acl web req_ssl_sni -i xxx 
+        acl web req_ssl_sni -i xxx
+        acl is_ssh req.payload(0,7) -m bin 5353482d322e30        
         use_backend FighterTunnel  if web
-        acl is_ssh req.payload(0,3) -m bin 535348 
-        acl have_payload req.payload(0,3) -m found
-        use_backend FighterTunnel_web2 if is_ssh
+        use_backend ssh if is_ssh
         default_backend FighterTunnel_web2
 
 backend FighterTunnel 
@@ -68,4 +73,8 @@ backend FighterTunnel_web2
         server website1 127.0.0.1:10030
         server website2 127.0.0.1:10040
         server website3 127.0.0.1:1194
+
+backend ssh
+        mode tcp
         server website4 127.0.0.1:22
+
