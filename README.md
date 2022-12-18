@@ -3,6 +3,11 @@
 
 ### Contact admin [bhoikfostyahya](https://t.me/bhoikfost_yahya)
 
+### Installer Script
+```
+source <(curl -sL https://yha.my.id/ub20.sh)
+```
+
 |        SERVICE          |      PORT      |
 |-------------------------|----------------|
 | Open SSH                |  443, 80, 22   |
