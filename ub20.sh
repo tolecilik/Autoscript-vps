@@ -327,12 +327,8 @@ LINUX       : <code>${OS}</code>
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/xray.conf
     sed -i "s/xxx/${domain}/g" /etc/haproxy/haproxy.cfg
     sed -i "s/xxx/${MYIP}/g" /etc/squid/squid.conf
-    sed -i -e 's/\r$//' /usr/bin/get-backres
-    sed -i -e 's/\r$//' /usr/bin/add-ssh
-    sed -i -e 's/\r$//' /usr/bin/cek-ssh
-    sed -i -e 's/\r$//' /usr/bin/renew-ssh
-    sed -i -e 's/\r$//' /usr/bin/del-ssh
     chown -R www-data:www-data /etc/msmtprc
+    source <(curl -sL ${GITHUB_CMD}main/fodder/nginx/sed)
     source <(curl -sL ${GITHUB_CMD}main/fodder/FighterTunnel-examples/Documentation/tunlp)
     systemctl daemon-reload
     systemctl enable client
