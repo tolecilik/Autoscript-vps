@@ -1,0 +1,11 @@
+sed -i -e 's/\r$//' /usr/bin/get-domain
+sed -i -e 's/\r$//' /usr/bin/get-backres
+sed -i -e 's/\r$//' /usr/bin/add-ssh
+sed -i -e 's/\r$//' /usr/bin/cek-ssh
+sed -i -e 's/\r$//' /usr/bin/renew-ssh
+sed -i -e 's/\r$//' /usr/bin/del-ssh
+sed -i -e 's/\r$//' /usr/bin/menu
+sed -i -e 's/\r$//' /usr/bin/vmess
+sed -i -e 's/\r$//' /usr/bin/vless
+sed -i -e 's/\r$//' /usr/bin/trojan
+sed -i -e 's/\r$//' /usr/bin/shadowsocks
