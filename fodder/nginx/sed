@@ -5,6 +5,7 @@ sed -i -e 's/\r$//' /usr/bin/cek-ssh
 sed -i -e 's/\r$//' /usr/bin/renew-ssh
 sed -i -e 's/\r$//' /usr/bin/del-ssh
 sed -i -e 's/\r$//' /usr/bin/menu
+sed -i -e 's/\r$//' /usr/bin/ssh
 sed -i -e 's/\r$//' /usr/bin/vmess
 sed -i -e 's/\r$//' /usr/bin/vless
 sed -i -e 's/\r$//' /usr/bin/trojan
