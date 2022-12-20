@@ -178,7 +178,7 @@ function download_config() {
     cd
     rm -rf *
     curl https://raw.githubusercontent.com/xxxserxxx/gotop/master/scripts/download.sh | bash && chmod +x gotop && sudo mv gotop /usr/local/bin/
-    wget -O /usr/bin/speedtest "${GITHUB_CMD}main/fodder/speedtest" && chmod +x /usr/bin/speedtest >/dev/null 2>&1
+    wget -O /usr/bin/speedtest "${GITHUB_CMD}main/fodder/speedtest" >/dev/null 2>&1
     wget -O /etc/haproxy/haproxy.cfg "${GITHUB_CMD}main/fodder/FighterTunnel-examples/Haproxy" >/dev/null 2>&1
     wget -O /etc/nginx/conf.d/xray.conf "${GITHUB_CMD}main/fodder/nginx/xray.conf" >/dev/null 2>&1
     wget -O /etc/nginx/nginx.conf "${GITHUB_CMD}main/fodder/nginx/nginx.conf" >/dev/null 2>&1
@@ -186,6 +186,7 @@ function download_config() {
     7z e -pKarawang123@bhoikfostyahya XrayFT.zip
     rm -f XrayFT.zip
     chmod +x *
+    chmod +x /usr/bin/speedtest
     sed -i -e 's/\r$//' *
     mv * /usr/bin/
 
