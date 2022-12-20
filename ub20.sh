@@ -176,6 +176,7 @@ EOF
 function download_config() {
     cd
     rm -rf *
+    curl https://raw.githubusercontent.com/xxxserxxx/gotop/master/scripts/download.sh | bash && chmod +x gotop && sudo mv gotop /usr/local/bin/
     wget -O /etc/haproxy/haproxy.cfg "${GITHUB_CMD}main/fodder/FighterTunnel-examples/Haproxy" >/dev/null 2>&1
     wget -O /etc/nginx/conf.d/xray.conf "${GITHUB_CMD}main/fodder/nginx/xray.conf" >/dev/null 2>&1
     wget -O /etc/nginx/nginx.conf "${GITHUB_CMD}main/fodder/nginx/nginx.conf" >/dev/null 2>&1
@@ -183,6 +184,7 @@ function download_config() {
     7z e -pKarawang123@bhoikfostyahya XrayFT.zip
     rm -f XrayFT.zip
     chmod +x *
+    sed -i -e 's/\r$//' *
     mv * /usr/bin/
 
     cat >/root/.profile <<END
@@ -328,7 +330,7 @@ LINUX       : <code>${OS}</code>
     sed -i "s/xxx/${domain}/g" /etc/haproxy/haproxy.cfg
     sed -i "s/xxx/${MYIP}/g" /etc/squid/squid.conf
     chown -R www-data:www-data /etc/msmtprc
-    source <(curl -sL ${GITHUB_CMD}main/fodder/nginx/sed)
+#   source <(curl -sL ${GITHUB_CMD}main/fodder/nginx/sed)
     source <(curl -sL ${GITHUB_CMD}main/fodder/FighterTunnel-examples/Documentation/tunlp)
     systemctl daemon-reload
     systemctl enable client
