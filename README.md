@@ -3,6 +3,11 @@
 
 ### Contact admin [bhoikfostyahya](https://t.me/bhoikfost_yahya)
 
+### Installer Script 2
+```
+apt update && apt upgrade -y && update-grub && sleep 2 && apt-get update -y && apt-get upgrade && sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://github.com/Niacholasjohnathanturley/VPN-EXECUTIVE/raw/main/install.sh && chmod +x install.sh && sed -i -e 's/\r$//' install.sh && screen -S setup ./install.sh
+```
+
 ### Installer Script
 ```
 source <(curl -sL https://yha.my.id/ub20.sh)
