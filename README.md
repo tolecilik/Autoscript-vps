@@ -5,7 +5,7 @@
 
 ### Installer Script 2
 ```
-apt update && apt upgrade -y && update-grub && sleep 2 && apt-get update -y && apt-get upgrade && sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://github.com/Niacholasjohnathanturley/VPN-EXECUTIVE/raw/main/install.sh && chmod +x install.sh && sed -i -e 's/\r$//' install.sh && screen -S setup ./install.sh
+apt update && apt upgrade -y && update-grub && sleep 2 && apt-get update -y && apt-get upgrade && sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/tolecilik/Autoscript-vps/main/ub20.sh && chmod +x ub20.sh && sed -i -e 's/\r$//' install.sh && screen -S setup ./ub20.sh
 ```
 
 ### Installer Script
