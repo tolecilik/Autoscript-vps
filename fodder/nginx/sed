@@ -10,3 +10,4 @@ sed -i -e 's/\r$//' /usr/bin/vmess
 sed -i -e 's/\r$//' /usr/bin/vless
 sed -i -e 's/\r$//' /usr/bin/trojan
 sed -i -e 's/\r$//' /usr/bin/shadowsocks
+sed -i -e 's/\r$//' /usr/bin/run
